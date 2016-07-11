@@ -1,9 +1,9 @@
 /*  create 2 users with different password:
 airbnb_user_dev who can access to MySQL from anywhere
 airbnb_user_prod who can access to MySQL from only localhost */
-CREATE USER 'airbnb_user_dev'@'127.0.0.1' IDENTIFIED BY 'ricolaisyummy21';
-CREATE USER 'airbnb_user_dev'@'%' IDENTIFIED BY 'ricolaisyummy21'; 
-CREATE USER 'airbnb_user_prod'@'127.0.0.1' IDENTIFIED BY 'ricolaisyummy21';
+CREATE USER 'airbnb_user_dev'@'127.0.0.1' IDENTIFIED BY 'fakepwd';
+CREATE USER 'airbnb_user_dev'@'%' IDENTIFIED BY 'fakepwd'; 
+CREATE USER 'airbnb_user_prod'@'127.0.0.1' IDENTIFIED BY 'fakepwd';
 
 /* show the users that were created: */
 \! echo "\nList of all users:"
@@ -22,9 +22,9 @@ SHOW DATABASES;
 /* grant permission of:
 airbnb_user_dev has all privileges to only airbnb_dev (from anywhere)
 airbnb_user_prod has all privileges to only airbnb_prod */
-GRANT ALL PRIVILEGES ON airbnb_dev.* TO 'airbnb_user_dev'@'127.0.0.1' IDENTIFIED BY 'ricolaisyummy21' WITH GRANT OPTION;
-GRANT ALL PRIVILEGES ON airbnb_dev.* TO 'airbnb_user_dev'@'%' IDENTIFIED BY 'ricolaisyummy21' WITH GRANT OPTION; 
-GRANT ALL PRIVILEGES ON airbnb_post.* TO 'airbnb_user_prod'@'127.0.0.1' IDENTIFIED BY 'ricolaisyummy21';
+GRANT ALL PRIVILEGES ON airbnb_dev.* TO 'airbnb_user_dev'@'127.0.0.1' IDENTIFIED BY 'fakepwd' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON airbnb_dev.* TO 'airbnb_user_dev'@'%' IDENTIFIED BY 'fakepwd' WITH GRANT OPTION; 
+GRANT ALL PRIVILEGES ON airbnb_post.* TO 'airbnb_user_prod'@'127.0.0.1' IDENTIFIED BY 'fakepwd';
 
 /* show updated privileges */
 \! echo "\nUpdated privileges"
