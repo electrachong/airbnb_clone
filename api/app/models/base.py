@@ -18,8 +18,8 @@ print database
 ''' Define the basemodel to be used for peewee classes '''
 class BaseModel(peewee.Model):
     id = peewee.PrimaryKeyField(unique=True)
-    created_at = datetime.datetime.now().strftime("%Y/%m/%d %H:%M:%S")
-    updated_at = datetime.datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+    created_at = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    updated_at = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     
     def save(self, *args, **kwargs):
         # unsure how self.updated_at refers to class variable BaseModel.updated_at
