@@ -3,7 +3,7 @@ import hashlib
 import base
 
 ''' Create a User class inheriting from peewee BaseModel '''
-class User(BaseModel):
+class User(base.BaseModel):
     email = peewee.CharField(128, null=False, unique=True)
     password = peewee.CharField(128, null=False)
     first_name = peewee.CharField(128, null=False)
