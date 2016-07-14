@@ -1,5 +1,4 @@
 import os
-
 AIRBNB_ENV = os.environ.get('AIRBNB_ENV')
 
 if AIRBNB_ENV == "development": # add all variables we want to set

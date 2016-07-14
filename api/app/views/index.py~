@@ -2,6 +2,9 @@ import datetime
 import peewee
 from flask import Flask
 from flask_json import as_json
+import sys
+sys.path.append('../..')
+import config
 from app import app, json, models
 
 ''' Create a JSON response '''
