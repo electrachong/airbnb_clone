@@ -1,10 +1,11 @@
 import peewee
 import base
+import user, city
 
 ''' Define Place class based on peewee BaseModel  '''
-class Place(BaseModel):
-    owner = peewee.ForeignKeyField(User, related_name="places")
-    city = peewee.ForeignKeyField(City, related_name="places")
+class Place(base.BaseModel):
+    owner = peewee.ForeignKeyField(user.User, related_name="places")
+    city = peewee.ForeignKeyField(city.City, related_name="places")
     name = peewee.CharField(128, null=False)
     description = peewee.TextField()
     number_rooms = peewee.IntegerField(default=0)
