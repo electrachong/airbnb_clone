@@ -4,7 +4,7 @@ from flask import Flask
 from flask_json import as_json
 import sys
 sys.path.append('../..')
-import config
+import config, models
 from app import app, json
 
 ''' Create a JSON response '''
@@ -19,12 +19,9 @@ def before_request():
     config.database.connect()
 
 ''' Close the database connection after every request '''
-def after_request():
-    config.database.close()
-
 @app.after_request
-def run_after_request_callback(response):
-    response = after_request()
+def after_request(response):
+    config.database.close()
     return response
 
 ''' In case of 404 error, return JSON with a not found message '''
