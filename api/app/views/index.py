@@ -6,6 +6,8 @@ import sys
 sys.path.append('../..')
 import config
 from app import app, json
+sys.path.append('..')
+import models
 
 ''' Create a JSON response '''
 @app.route('/', methods=['GET'])
