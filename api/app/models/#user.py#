@@ -2,7 +2,6 @@ import peewee
 import hashlib
 import base
 
-''' Create a User class inheriting from peewee BaseModel '''
 class User(BaseModel):
     email = peewee.CharField(128, null=False, unique=True)
     password = peewee.CharField(128, null=False)
@@ -10,11 +9,10 @@ class User(BaseModel):
     last_name = peewee.CharField(128, null=False)
     is_admin = peewee.BooleanField(default=False)
 
-    ''' Store updated password, as a hash '''
     def set_password(self, clear_password):
         m = hashlib.md5()
         m.update(clear_password)
-        User.password = m.digest()
+        
         
 
 

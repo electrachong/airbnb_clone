@@ -5,7 +5,7 @@ import sys
 sys.path.append('../..')
 import config
 
-print config.PORT
+''' Populate peewee database with config variables '''
 database = peewee.MySQLDatabase(config.DATABASE['database'], 
                          host=config.DATABASE['host'],
                          port=config.DATABASE['port'],
@@ -15,6 +15,7 @@ database = peewee.MySQLDatabase(config.DATABASE['database'],
 
 print database
 
+''' Define the basemodel to be used for peewee classes '''
 class BaseModel(peewee.Model):
     id = peewee.PrimaryKeyField(unique=True)
     created_at = datetime.datetime.now().strftime("%Y/%m/%d %H:%M:%S")
