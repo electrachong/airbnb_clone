@@ -16,12 +16,12 @@ def index():
 ''' Connect to the database before every request '''
 @app.before_request
 def before_request():
-    database.connect()
+    models.database.connect()
 
 ''' Close the database connection after every request '''
 @app.after_request
 def after_request(response):
-    database.close()
+    models.database.close()
     return response
 
 ''' In case of 404 error, return JSON with a not found message '''
