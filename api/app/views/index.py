@@ -4,7 +4,8 @@ from flask import Flask
 from flask_json import as_json
 import sys
 sys.path.append('../..')
-import config, models
+import config
+from models import *
 from app import app, json
 
 ''' Create a JSON response '''

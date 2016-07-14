@@ -6,3 +6,4 @@ json = FlaskJSON(app)
 
 # update if needed:
 from views import *
+from models import *
