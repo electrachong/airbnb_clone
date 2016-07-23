@@ -12,4 +12,17 @@ elif AIRBNB_ENV == "production":
     PORT = 3000
     DATABASE = {'host': '158.69.79.7', 'user': 'airbnb_user_prod', 'database': 'airbnb_prod', 'port': 3306, 'charset': 'utf8', 'password': os.environ.get('AIRBNB_DATABASE_PWD_PROD')}
 
+elif AIRBNB_ENV == "test":
+    DEBUG = False
+    HOST = 'localhost'
+    PORT = 5555
+    DATABASE = {
+        'host': '158.69.92.181',
+        'user': 'airbnb_test_user',
+        'database': 'airbnb_test',
+        'port': 3306,
+        'charset': 'utf8',
+        'password': os.environ.get('AIRBNB_DATABASE_PWD_TEST')
+    }
+
 
