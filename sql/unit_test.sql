@@ -9,3 +9,5 @@ GRANT ALL PRIVILEGES ON airbnb_test.*
     TO 'airbnb_test_user'@'%' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON airbnb_test.*
     TO 'airbnb_test_user'@'127.0.0.1' IDENTIFIED BY 'password';
+
+FLUSH PRIVILEGES;
