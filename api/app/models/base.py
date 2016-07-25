@@ -1,19 +1,18 @@
 import peewee
 import datetime
 import sys
-# this import statement only works if executing this file in models folder
 sys.path.append('../..')
 import config
 
+print config.DATABASE['password']
+
 ''' Populate peewee database with config variables '''
 database = peewee.MySQLDatabase(config.DATABASE['database'], 
-                         host=config.DATABASE['host'],
-                         port=config.DATABASE['port'],
-                         user=config.DATABASE['user'], 
-                         passwd=config.DATABASE['password'], 
-                         charset=config.DATABASE['charset'])
-
-print database
+                          host=config.DATABASE['host'],
+                          port=config.DATABASE['port'], 
+                          user=config.DATABASE['user'], 
+                          passwd=config.DATABASE['password'], 
+                          charset=config.DATABASE['charset'])
 
 ''' Define the basemodel to be used for peewee classes '''
 class BaseModel(peewee.Model):
