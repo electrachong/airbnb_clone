@@ -18,7 +18,7 @@ elif AIRBNB_ENV == "test":
     PORT = 5555
     DATABASE = {
         'host': '158.69.92.181',
-        'user': 'airbnb_test_user',
+        'user': 'airbnb_user_test',
         'database': 'airbnb_test',
         'port': 3306,
         'charset': 'utf8',
