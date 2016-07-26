@@ -4,8 +4,6 @@ import sys
 sys.path.append('../..')
 import config
 
-print config.DATABASE['password']
-
 ''' Populate peewee database with config variables '''
 database = peewee.MySQLDatabase(config.DATABASE['database'], 
                           host=config.DATABASE['host'],
