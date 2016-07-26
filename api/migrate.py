@@ -1,3 +1,4 @@
 from app import models
+import models.database
 
-base.database.create_tables([User, State, City, Place, Amenity, PlaceBook, PlaceAmenities])
+database.create_tables([User, State, City, Place, Amenity, PlaceBook, PlaceAmenities])
