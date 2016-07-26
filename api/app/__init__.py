@@ -4,6 +4,7 @@ from flask_json import FlaskJSON
 app = Flask(__name__)
 json = FlaskJSON(app)
 
-# update if needed:
+# configure Flask so it will not automatically append status to JSON 
+app.config['JSON_ADD_STATUS'] = False
+
 from views import *
-from models import *
