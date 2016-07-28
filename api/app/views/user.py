@@ -17,44 +17,24 @@ def get_user():
 @flask_json.as_json
 def create_user():
 
-        # for now, we are going to validate our data up-front
-        ''' another method would be to catch peewee exceptions 
-            (e.g. OperationalError: (1048, "Column 'is_admin' cannot be null")) 
-            and this might save some work, but it's an open question as to what 
-            is better practice '''
-        post_param = dict(
-                email = request.form.get("email"),
-                password = request.form.get("password"),
-                first_name = request.form.get("first_name"),
-                last_name = request.form.get("last_name"),
-                is_admin = request.form.get("is_admin")
-        )
-
-        # If any required parameters are missing:
-        '''if post_param['email'] == None \
-           or post_param['password'] == None \
-           or post_param['first_name'] == None \
-           or post_param['last_name'] == None:
-                return dict(
-                        code=400,
-                        msg="Bad request: missing data"
-                ), 400'''
+        is_admin = request.form.get("is_admin")
 
         ''' If is_admin is not specified, set its value to the default (False), 
             otherwise cast it to Boolean so the proper type is passed '''
-        if post_param['is_admin'] == True \
-           or post_param['is_admin'] == False:
-                post_param['is_admin'] = Boolean(post_param['is_admin'])
+        if is_admin == True \
+           or is_admin == False:
+                is_admin = Boolean(is_admin)
         else:
-                post_param['is_admin'] = False
+                is_admin = False
 
+        # Note: right now, this does not prevent empty strings being passed to API
         try:
                 new_user = User(
-                        email = post_param['email'],
-                        password = post_param['password'],
-                        first_name = post_param['first_name'],
-                        last_name = post_param['last_name'],
-                        is_admin = post_param['is_admin']
+                        email = request.form.get('email'),
+                        password = request.form.get('password'),
+                        first_name = request.form.get('first_name'),
+                        last_name = request.form.get('last_name'),
+                        is_admin = is_admin
                 )
                 new_user.set_password(new_user.password)
                 new_user.save()
