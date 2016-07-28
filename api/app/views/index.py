@@ -25,5 +25,5 @@ def after_request(response):
 ''' In case of 404 error, return JSON with a not found message '''
 @app.errorhandler(404)
 @flask_json.as_json
-def not_found(self):
+def not_found():
     return dict(code=404, msg="not found"), 404
