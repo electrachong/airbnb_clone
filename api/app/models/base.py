@@ -21,7 +21,14 @@ class BaseModel(peewee.Model):
     def save(self, *args, **kwargs):
         # unsure how self.updated_at refers to class variable BaseModel.updated_at
         self.updated_at = datetime.datetime.now().strftime("%Y/%m/%d %H:%M:%S")
-        peewee.Model.save()
+        peewee.Model.save(self)
+
+    def to_hash(self):
+        return dict(
+            id = self.id,
+            created_at = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+            updated_at = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+            )
     
     class Meta:
         database = database

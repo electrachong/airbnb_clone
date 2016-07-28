@@ -1,17 +1,16 @@
-from flask import request
-from app import app, json
+from flask import request, jsonify
+from app import app
 from app.models.user import User
 import peewee
 import flask_json
 
-''' Create a JSON response '''
+''' Specify responses for /users route '''
 @app.route('/users', methods=['GET'])
-@flask_json.as_json
 def get_user():
         array_users = []
         for user in User.select():
-                array_users += user.to_hash()
-        return array_users
+                array_users += [user.to_hash()]
+        return jsonify(array_users)
 
 @app.route('/users', methods=['POST'])
 @flask_json.as_json

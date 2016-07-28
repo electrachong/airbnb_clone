@@ -15,15 +15,14 @@ class User(base.BaseModel):
         m = hashlib.md5()
         m.update(clear_password)
         User.password = m.digest()
-        
+
     def to_hash(self):
-        return dict(
-            id = User.id,
-            created_at = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
-            updated_at = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
-            email = User.email,
-            first_name = User.first_name,
-            last_name = User.last_name,
-            is_admin = User.is_admin
-        )
+        new_hash = base.BaseModel.to_hash(self)
+        new_hash.update(dict(
+            email = self.email,
+            first_name = self.first_name,
+            last_name = self.last_name,
+            is_admin = self.is_admin
+        ))
+        return new_hash
 
